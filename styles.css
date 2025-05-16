@@ -1,0 +1,699 @@
+/* 全局样式 */
+:root {
+    --primary-color: #9370DB;
+    --text-color: #333;
+    --border-color: #e8e8e8;
+    --background-color: #f5f5f5;
+    --white: #ffffff;
+    --a4-width: 210mm;
+    --a4-height: 297mm;
+    --content-padding: 20mm;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 头部样式 */
+.site-header {
+    background: var(--white);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.main-nav {
+    display: flex;
+    gap: 10px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 8px 16px;
+    border-radius: 4px;
+}
+
+.main-nav a.active {
+    color: var(--primary-color);
+    background-color: rgba(244,81,30,0.1);
+}
+
+/* 主要内容区域 */
+.main-content {
+    display: flex;
+    flex: 1;
+    padding: 20px;
+    gap: 30px;  /* 增加间距 */
+    max-width: calc(var(--a4-width) * 1.6 + 400px);  /* 扩大整体宽度 */
+    margin: 0 auto;
+    width: 100%;
+    height: calc(100vh - 80px);
+    overflow: hidden;
+}
+
+/* 侧边栏样式 */
+.sidebar {
+    width: 280px;
+    background: var(--white);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.template-selector h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.template-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.template-item {
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+}
+
+.template-item.active {
+    border-color: var(--primary-color);
+    background-color: rgba(244,81,30,0.1);
+}
+
+.template-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+
+.template-item span {
+    font-size: 12px;
+    color: var(--text-color);
+}
+
+/* 编辑区域样式 */
+.editor-section {
+    min-width: 380px;  /* 设置最小宽度 */
+    max-width: 400px;  /* 设置最大宽度 */
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+}
+
+.section-tabs {
+    display: flex;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tab-btn {
+    padding: 15px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: var(--text-color);
+    font-size: 14px;
+    flex: 1;
+    text-align: center;
+}
+
+.tab-btn.active {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.form-sections {
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: none;
+}
+
+.form-group.active {
+    display: block;
+}
+
+/* 表单控件样式 */
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* 照片上传区域 */
+.photo-upload {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.photo-preview {
+    display: none;
+}
+
+.photo-controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.upload-btn, .delete-photo-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.upload-btn {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+}
+
+.delete-photo-btn {
+    background-color: #f8f9fa;
+    color: #dc3545;
+    border: 1px solid #dc3545;
+}
+
+/* 简历样式 */
+.resume {
+    padding: 15mm 20mm;  /* 减小内边距 */
+    background: var(--white);
+    width: var(--a4-width);
+    height: var(--a4-height);
+    margin: 0 auto;
+    position: relative;
+    box-sizing: border-box;
+    font-size: 12px;  /* 稍微减小基础字体大小 */
+    overflow: hidden;
+}
+
+.resume-title {
+    font-size: 18px;  /* 减小标题大小 */
+    color: var(--primary-color);
+    text-align: center;
+    position: absolute;
+    top: 8mm;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    font-weight: bold;
+}
+
+/* 简历标题样式 */
+.section-title {
+    font-size: 14px;  /* 减小标题字体 */
+    color: var(--white);
+    padding: 4px 4px;  /* 减小内边距 */
+    margin: 6px 0;  /* 减小外边距 */
+    display: block;
+    position: relative;
+    background: rgba(147, 112, 219, 0.08);
+}
+
+/* 调整第一个section的位置 */
+.section:first-of-type {
+    margin-top: 35px;  /* 增加与标题的距离 */
+}
+
+.section-title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: var(--text-width, 0);
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.section-title span {
+    position: relative;
+    z-index: 1;
+    padding: 0 6px;
+}
+
+/* 调整信息网格的位置 */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;  /* 减小网格间距 */
+    margin-bottom: 8px;
+    width: calc(100% - 35mm);
+    padding-left: 20px;
+    margin-top: 15px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+}
+
+.info-label {
+    min-width: 65px;  /* 减小标签宽度 */
+    color: #666;
+    font-size: 12px;
+    text-align: justify;
+    text-align-last: justify;
+    margin-right: 12px;
+}
+
+.info-content {
+    flex: 1;
+}
+
+.education-item, .competition-item {
+    margin-bottom: 10px;  /* 减小项目间距 */
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.education-header, .competition-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.school-name, .competition-name {
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.education-period, .competition-period {
+    color: #666;
+    font-size: 11px;
+}
+
+.major-info {
+    color: #666;
+    margin-bottom: 3px;
+    font-size: 12px;
+}
+
+.courses {
+    font-size: 11px;
+    color: #666;
+    margin-top: 3px;
+}
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-item {
+    background-color: #f8f9fa;
+    padding: 3px 6px;
+    border-radius: 3px;
+    font-size: 11px;
+}
+
+/* 添加按钮样式 */
+.add-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: #f8f9fa;
+    color: var(--primary-color);
+    border: 1px dashed var(--primary-color);
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.add-btn:hover {
+    background-color: rgba(244,81,30,0.1);
+}
+
+/* 预览区域样式 */
+.preview-section {
+    flex: 1;
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 30px;  /* 增加内边距 */
+    height: 100%;
+    position: relative;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#resume-preview {
+    width: var(--a4-width);
+    height: var(--a4-height);
+    margin: 0;
+    background-color: var(--white);
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transform-origin: top center;
+    transform: scale(1);  /* 恢复原始大小 */
+}
+
+/* 响应式设计 */
+@media (max-width: 1440px) {
+    .main-content {
+        max-width: calc(var(--a4-width) * 1.4 + 400px);
+    }
+    #resume-preview {
+        transform: scale(0.95);
+    }
+}
+
+@media (max-width: 1200px) {
+    .main-content {
+        max-width: calc(var(--a4-width) * 1.2 + 400px);
+    }
+    #resume-preview {
+        transform: scale(0.9);
+    }
+}
+
+@media (max-width: 1024px) {
+    .main-content {
+        flex-direction: column;
+    }
+
+    .editor-section {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .site-header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .template-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .section-tabs {
+        overflow-x: auto;
+    }
+}
+
+/* 打印样式优化 */
+@media print {
+    @page {
+        size: A4;
+        margin: 0;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        background: none;
+    }
+
+    .site-header, .editor-section, .preview-section {
+        display: none;
+    }
+
+    .container {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
+    .main-content {
+        padding: 0;
+        margin: 0;
+    }
+
+    .resume {
+        padding: 15mm 20mm;
+        margin: 0;
+        width: 210mm;
+        height: 297mm;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
+    #resume-preview {
+        width: 210mm;
+        height: 297mm;
+    }
+}
+
+/* 照片样式 */
+.resume .avatar {
+    position: absolute;
+    top: 30px;  /* 上移 */
+    right: 10px;  /* 右移 */
+    width: 25mm;
+    height: 30mm;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.resume .avatar img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    width: auto;
+    height: auto;
+}
+
+/* 颜色选择器样式 */
+.color-picker {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 15px;
+}
+
+.color-picker label {
+    color: var(--text-color);
+    font-size: 14px;
+}
+
+.color-picker input[type="color"] {
+    width: 40px;
+    height: 30px;
+    padding: 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* 自定义模块样式 */
+.section-entry {
+    margin-bottom: 15px;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--white);
+}
+
+.section-title-input {
+    width: 100%;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    padding: 6px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--primary-color);
+}
+
+.entries-container {
+    margin-bottom: 10px;
+}
+
+.custom-entry {
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.custom-entry:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.custom-entry input {
+    width: 100%;
+    padding: 6px;
+    margin-bottom: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.add-entry-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: none;
+    border: 1px dashed var(--primary-color);
+    color: var(--primary-color);
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-top: 8px;
+    width: 100%;
+    justify-content: center;
+}
+
+.add-entry-btn:hover {
+    background-color: rgba(147, 112, 219, 0.1);
+}
+
+.delete-entry-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    color: #dc3545;
+    padding: 4px 8px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-left: auto;
+}
+
+.delete-entry-btn:hover {
+    text-decoration: underline;
+}
+
+.entry-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 5px;
+}
+
+/* 编辑区域内的新增模块按钮 */
+.add-section-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: 100%;
+    padding: 8px;
+    margin-top: 15px;
+    background-color: var(--white);
+    border: 1px dashed var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.add-section-btn:hover {
+    background-color: rgba(147, 112, 219, 0.1);
+}
+
+/* 确保表单部分可以滚动 */
+.form-sections {
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* 简历标题可编辑样式 */
+.section-title {
+    position: relative;
+    cursor: pointer;
+}
+
+.section-title:hover::after {
+    content: "点击编辑";
+    position: absolute;
+    right: 10px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* 确保section有相对定位 */
+.resume .section {
+    position: relative;
+}
+
+/* 调整第一个section的间距 */
+.resume .section:first-of-type {
+    margin-bottom: 0;
+}
+
+/* 确保第二个section标题正确显示 */
+.section:nth-of-type(2) {
+    margin-top: 20px;
+}
+
+.section {
+    margin-bottom: 12px;  /* 减小section之间的间距 */
+}
+
+/* 第一个标题栏的特殊处理 */
+.section:first-of-type .section-title {
+    margin-top: 30px;  /* 为第一个标题栏添加额外的顶部间距 */
+} 

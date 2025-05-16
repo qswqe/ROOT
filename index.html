@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>刘哥在线简历制作</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="site-header">
+            <div class="logo">刘哥在线简历制作</div>
+            <nav class="main-nav">
+                <div class="color-picker">
+                    <label for="theme-color">主题颜色：</label>
+                    <input type="color" id="theme-color" value="#f4511e" onchange="changeThemeColor(this.value)">
+                </div>
+                <button onclick="downloadPDF()" class="toolbar-btn">
+                    <span class="material-icons">download</span>下载 PDF
+                </button>
+                <button onclick="saveLocally()" class="toolbar-btn">
+                    <span class="material-icons">save</span>保存
+                </button>
+                <button onclick="loadFromLocal()" class="toolbar-btn">
+                    <span class="material-icons">folder_open</span>加载
+                </button>
+            </nav>
+        </header>
+
+        <div class="main-content">
+            <!-- 预览区域 -->
+            <div class="preview-section">
+                <div id="resume-preview">
+                    <!-- 预览区域将通过 JavaScript 动态更新 -->
+                </div>
+            </div>
+
+            <!-- 编辑区域 -->
+            <div class="editor-section">
+                <div class="section-tabs">
+                    <button class="tab-btn active">基本信息</button>
+                    <button class="tab-btn">教育背景</button>
+                    <button class="tab-btn">自定义模块</button>
+                </div>
+
+                <div class="form-sections">
+                    <div class="form-group active" id="basic-info">
+                        <div class="photo-upload">
+                            <div class="photo-preview">
+                                <img id="avatar-preview" src="https://via.placeholder.com/150" alt="头像预览">
+                            </div>
+                            <div class="photo-controls">
+                                <input type="file" id="avatar-upload" accept="image/*" onchange="handlePhotoUpload(event)" style="display: none;">
+                                <button class="upload-btn" onclick="document.getElementById('avatar-upload').click()">
+                                    <span class="material-icons">add_photo_alternate</span>
+                                    上传照片
+                                </button>
+                                <button class="delete-photo-btn" onclick="removePhoto()">
+                                    <span class="material-icons">delete</span>
+                                    删除照片
+                                </button>
+                            </div>
+                        </div>
+                        <input type="text" id="name" placeholder="姓名" onchange="updateResume()">
+                        <input type="text" id="birth" placeholder="出生年月" onchange="updateResume()">
+                        <select id="gender" onchange="updateResume()">
+                            <option value="">选择性别</option>
+                            <option value="男">男</option>
+                            <option value="女">女</option>
+                        </select>
+                        <input type="text" id="height" placeholder="身高" onchange="updateResume()">
+                        <input type="tel" id="phone" placeholder="电话" onchange="updateResume()">
+                        <input type="email" id="email" placeholder="邮箱" onchange="updateResume()">
+                    </div>
+
+                    <div class="form-group" id="education">
+                        <div id="education-container">
+                            <div class="education-entry">
+                                <input type="text" placeholder="学校名称" class="school" onchange="updateResume()">
+                                <input type="text" placeholder="专业" class="major" onchange="updateResume()">
+                                <input type="text" placeholder="学位" class="degree" onchange="updateResume()">
+                                <input type="text" placeholder="时间段" class="period" onchange="updateResume()">
+                                <input type="text" placeholder="主修课程" class="courses" onchange="updateResume()">
+                            </div>
+                        </div>
+                        <button class="add-btn" onclick="addEducation()">
+                            <span class="material-icons">add</span>添加教育经历
+                        </button>
+                    </div>
+
+                    <div class="form-group" id="custom-sections">
+                        <div id="custom-sections-container">
+                            <div class="section-entry">
+                                <input type="text" placeholder="模块标题" class="section-title-input" onchange="updateResume()">
+                                <div class="entries-container"></div>
+                                <button class="add-entry-btn" onclick="addCustomEntry(this.parentElement)">
+                                    <span class="material-icons">add</span>添加条目
+                                </button>
+                            </div>
+                        </div>
+                        <button class="add-btn" onclick="addCustomSection()">
+                            <span class="material-icons">add</span>添加新模块
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
